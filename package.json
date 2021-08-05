@@ -1,0 +1,29 @@
+{
+  "name": "tagged-template-strings",
+  "version": "1.0.0",
+  "description": "Tagged template literal helper for typescript, type-safe",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+		"typescript": "^4.3.5"
+	},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Leravig/tagged-template-strings.git"
+  },
+  "keywords": [
+    "tagged",
+    "template",
+    "string",
+    "literal",
+    "typescript"
+  ],
+  "author": "Leravig",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Leravig/tagged-template-strings/issues"
+  },
+  "homepage": "https://github.com/Leravig/tagged-template-strings#readme"
+}
