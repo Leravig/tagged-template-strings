@@ -1,4 +1,4 @@
-export function tlh (strings: string, ...keys:number[]) {
+export function tlh (strings: TemplateStringsArray, ...keys:number[]) {
   return (function(...values:string[]) {
     let dict: string = values[values.length - 1];
     let result = [strings[0]];
