@@ -1,29 +1,86 @@
 {
-  "name": "tagged-template-strings",
-  "version": "1.0.0",
-  "description": "Tagged template literal helper for typescript, type-safe",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "devDependencies": {
+	"name": "ropemaker",
+	"version": "0.1.0",
+	"description": "Roid-rage for making strings (factories for type-safe string generation)",
+	"type": "module",
+	"main": "./universal.cjs.js",
+	"module": "./universal.esm.js",
+	"exports": {
+		".": {
+			"import": "./universal.esm.js",
+			"require": "./universal.cjs.js"
+		},
+		"./universal": {
+			"import": "./universal.esm.js",
+			"require": "./universal.cjs.js"
+		},
+		"./positional": {
+			"import": "./positional.esm.js",
+			"require": "./positional.cjs.js"
+		},
+		"./structured": {
+			"import": "./structured.esm.js",
+			"require": "./structured.cjs.js"
+		}
+	},
+	"types": "./ropemaker.d.ts",
+	"files": [
+		"positional.esm.js",
+		"positional.cjs.js",
+		"structured.esm.js",
+		"structured.cjs.js",
+		"universal.esm.js",
+		"universal.cjs.js",
+		"ropemaker.d.ts"
+	],
+	"scripts": {
+		"prebuild": "replace-in-files --string='    ' --replacement='\\t' node_modules/typescript/lib/*.js",
+		"build": "tsc --build tsconfig.json tsconfig.cjs.json && mv -Force ./index.js ./index.esm.js && mv -Force node_modules/.tmp/cjs/index.js ./index.cjs.js",
+		"start": "tsc --watch -p tsconfig.json",
+		"test": "ava -vw index.test.ts",
+		"test:ci": "ava index.test.ts"
+	},
+	"devDependencies": {
+		"ava": "^3.15.0",
+		"replace-in-files-cli": "^1.0.0",
+		"ts-node": "^10.1.0",
 		"typescript": "^4.3.5"
 	},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Leravig/tagged-template-strings.git"
-  },
-  "keywords": [
-    "tagged",
-    "template",
-    "string",
-    "literal",
-    "typescript"
-  ],
-  "author": "Leravig",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Leravig/tagged-template-strings/issues"
-  },
-  "homepage": "https://github.com/Leravig/tagged-template-strings#readme"
+	"ava": {
+		"extensions": {
+			"ts": "module"
+		},
+		"nonSemVerExperiments": {
+			"configurableModuleFormat": true
+		},
+		"nodeArguments": [
+			"--loader=ts-node/esm"
+		],
+		"timeout": "100000",
+		"verbose": true
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Leravig/tagged-template-strings.git"
+	},
+	"keywords": [
+		"template-literal",
+		"templateliteral",
+		"es6 templates",
+		"factory",
+		"factories",
+		"type-safe",
+		"type safe",
+		"typesafe",
+		"typescript"
+	],
+	"author": "Leravig",
+	"contributors": [
+		"rasenplanscher"
+	],
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Leravig/tagged-template-strings/issues"
+	},
+	"homepage": "https://github.com/Leravig/tagged-template-strings#readme"
 }
